@@ -49,7 +49,7 @@
 
 ### Choosing the method
 
-**The question → method map** — *What kind of question is this, and what answers it?* Descriptive (what happened), diagnostic (why), predictive (what will happen), causal (what would happen if we acted). Each has a family of methods; using a predictive model to answer a causal question is the classic mismatch. The map is in [Stage 5](../workflow.md#stage-5--analyse).
+**The six questions** — *What kind of question is this, and what answers it?* What happened (descriptive) · why (diagnostic) · what happens if we do nothing (predictive) · what would our action cause (causal, before the decision) · what should we do (prescriptive) · did it work (causal, after). A decision raises them in that order and the last restarts the first. Classifying the ask is Stage 1 work ([the six questions](../workflow.md#the-six-questions)); matching the method is Stage 5 ([the map](../workflow.md#stage-5--analyse)). Using a diagnostic or predictive result to answer a causal question is the classic mismatch.
 
 **Proportionality** — *What is the simplest method that answers this well enough for this decision?* A segmentation in an afternoon beats a model in a fortnight. Stage 5.
 

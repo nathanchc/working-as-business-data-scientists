@@ -52,7 +52,23 @@ A stakeholder brings you something — or, as often for a good analyst, you brin
 
 ### Judgment & business skills
 - **Stakeholder discovery.** Who else cares about this? Who will act on the answer? Who might disagree with it?
-- **Reading the ask.** Is this a *why* question (diagnosis), a *what should we do* question (decision), or a *how bad is it* question (sizing)? Each needs a different analysis.
+- **Reading the ask.** Which question is actually being asked? Every ask is one of six, and most arrive as one and turn out to be another — the PM asks *why* when the decision needs to know *what would our action cause*. Classifying it is the first job, because the type decides the method (Stage 5) and the shape of the answer (Stage 7).
+
+<a id="the-six-questions"></a>
+
+| | The question | Type | How the ask usually arrives | Where the work lands |
+|---|---|---|---|---|
+| **Understand** | What happened? | Descriptive | "Keep the weekly revenue dashboard running." "How did conversion develop last quarter, by market?" | Stage 4–5 |
+| | Why did it happen? | Diagnostic | "Conversion dropped 8%. Can you look into it?" "Why are cancellations up in Spain?" | Stage 5 |
+| **Decide** | What happens if we do nothing? | Predictive | "What's the forecast for next quarter?" "Which customers will churn?" | Stage 5–6 |
+| | What would our action cause? | Causal, before the decision | "Design the price test and tell us whether to roll it out." | Stage 5 — the experiment |
+| | What should we do? | Prescriptive — sizing options and recommending | "Is this market worth entering?" "Which leads should sales call first?" | Stage 6–7 |
+| **Verify** | Did it work? | Causal, after the decision | "The fallback has been live a month. Did it recover the orders?" | Stage 8 — and the answer is the next *what happened* |
+
+Two things to notice. The questions form a loop, not a ladder: a decision raises them in this order, and the last one restarts the first. And the causal question appears twice — the same methods, run before the decision to inform it and after it to check it. The four-type model most courses teach (descriptive · diagnostic · predictive · prescriptive, popularised by Gartner and by Davenport and Harris) is a maturity ladder for organisations: it sorts analytics by how hard the output is to produce, and it has no rung for *did our action cause the change*, because a ladder goes up and a decision goes round. In business analytics that missing rung is the one most worth owning, and it is where the two causal questions sit here.
+
+A seventh ask — "define what counts as an active user" — is not a question about the business but about measurement; it is Stage 3 work, and it arrives constantly.
+
 - **Timeline and stakes.** A two-hour sanity check and a two-week deep dive are both valid answers. Find out which one is wanted before you start.
 - **Pushing back gracefully.** Sometimes the right response is "that's already answered here" or "that's not a data question."
 
@@ -240,14 +256,18 @@ This is where agents help most and fail most quietly. They write SQL fast and fl
 **Primary abilities:** Technical craft · Analytical reasoning
 
 ### What this stage is
-Do the work the question calls for — and no more. The method is chosen by the question:
+Do the work the question calls for — and no more. The question type was decided in [Stage 1](#the-six-questions); this is what each type calls for:
 
 | Question type | Typical method |
 |---|---|
-| *What happened?* | Descriptive: segmentation, funnels, cohorts, trend decomposition |
-| *Why did it happen?* | Diagnostic: root-cause analysis, contribution analysis, quasi-experimental comparison |
-| *What will happen?* | Predictive: forecasting, propensity models |
-| *What should we do, and would it work?* | **Causal: randomised controlled trials (A/B tests), or quasi-experiments when randomisation isn't possible** |
+| *What happened?* — descriptive | Segmentation, funnels, cohorts, trend decomposition |
+| *Why did it happen?* — diagnostic | Root-cause analysis, contribution and mix-shift analysis, comparison across segments and time |
+| *What happens if we do nothing?* — predictive | Forecasting, propensity and risk models |
+| *What would our action cause?* — causal, before | **Randomised controlled trials (A/B tests), or quasi-experiments when randomisation isn't possible** |
+| *What should we do?* — prescriptive | Sizing each option (reach × impact × confidence), cost of delay, and a recommendation — mostly Stage 6–7 work, resting on the two rows above |
+| *Did it work?* — causal, after | The same causal toolkit, run on the launched change; see Stage 8 |
+
+Diagnostic finds associations — "the drop is mostly returning users on the new payment method." Causal isolates what an action did — "the fallback raised completion by 1.8 points, and not because of the season." Using a diagnostic or predictive result to answer a causal question is the classic mismatch.
 
 **Running example.** Segmentation shows the real 4% drop is concentrated in returning users on a newly introduced payment method. The team wants to test a fallback option. That is an A/B test.
 
@@ -392,7 +412,7 @@ An analysis that doesn't change anything was a cost, not a contribution. This st
 **Running example.** Tracking is fixed; the A/B test ships; two weeks later the fallback shows a 1.8pp lift on the primary metric with guardrails flat. Rollout decision made. Three months later: is the lift still there, and did the ~€24k/week materialise? Did it change the metric definition conversation?
 
 ### Hard skills
-- Experiment monitoring and post-launch measurement
+- Experiment monitoring and post-launch measurement — the *did it work?* question from [Stage 1](#the-six-questions). When the change went to everyone at once there is no control group, so this is where the quasi-experimental designs (difference-in-differences, interrupted time series, synthetic control) earn their place; see [technical craft](competencies/technical-craft.md#6-causal-inference-without-an-experiment)
 - Dashboards and alerting for the metrics you recommended watching
 - Basic deployment literacy (where DS roles own models in production)
 
